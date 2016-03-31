@@ -1,6 +1,6 @@
 # HyperactiveRecord
 
-**Note: This project doesn’t actually exist (yet?). I’ve just written this README in the hope that someone else finds it compelling enough to implement it. (Or maybe I'll implement it myself one day.)**
+**Note: This project doesn’t actually exist. I’ve just written this README in the hope that someone else finds it compelling enough to implement it. (Or maybe I'll implement it myself sometime.)**
 
 HyperactiveRecord is an ActiveRecord plugin. It lets you write ActiveRecord-like queries with a DSL which more closely imitates the experience of using normal objects.
 
@@ -46,28 +46,23 @@ end
 # Let's load everything we need to make the show page on a blog.
 
 @post = Post.find(params[:id]).include do |post|
-  post.comments
+  post.comments.include { |c| c.user.only_load(:name, :avatar_url) }
   post.citations
   post.user.only_load(:name, :description, :avatar_url)
-
-  # these next two lines are equivalent
-  post.comments.flat_map(:user).only_load(:name, :avatar_url)
-  post.comments.include { |c| c.flat_map(:user).only_load(:name, :avatar_url) }
 
   # suppose we want to display the number of edits for some reason, as post.edit_count
   post.edit_count post.edits.count
 end
 @user = @post.user
-
-# I'm not sure yet whether that will evaluate eagerly or lazily. That
-# affects the semantics of, for example, calling @user before you call @post.
 ```
 
 ## How does it work?
 
 (Disclaimer: it doesn't; this software doesn't actually exist.)
 
-It works the same way ActiveRecord does. I don't know a good word for the design pattern which this is embodying, but functional programmers would talk about how this reminds them of the idea of [free objects](https://en.wikipedia.org/wiki/Free_object) in abstract algebra. (They most regularly talk about free monads: this library does indeed define a free monad, sort of--it has `map` and `flat_map`, and I guess `find` does sort of look like the map `return :: a -> M a`.
+It works the same way ActiveRecord does. I don't know a good word for the design pattern which this is embodying, but functional programmers would talk about how this reminds them of the idea of [free objects](https://en.wikipedia.org/wiki/Free_object) in abstract algebra. (They most regularly talk about free monads: this library does indeed define a free monad, sort of--it has `map` and `flat_map`, and I guess `find` does sort of look like the map `return :: a -> M a`.)
+
+
 
 ## API
 
