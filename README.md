@@ -54,6 +54,23 @@ end
   post.edit_count post.edits.count
 end
 @user = @post.user
+
+# We can even do recursion! (Honestly, this feature is more aspirational than even
+# the rest of this project. I'm not quite sure how I'd do it :/. I bet it's often
+# doable though.)
+
+class Comment
+  def children_comments
+    Comment.where(parent_id: self.id)
+  end
+
+  def descendant_comments
+    children_comments.flat_map(:descendant_comments) + children_comments
+  end
+end
+
+# only a single SQL query!
+@comment.descendant_comments
 ```
 
 ## How does it work?
