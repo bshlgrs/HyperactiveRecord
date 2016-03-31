@@ -184,3 +184,7 @@ like in AR
 like in Ruby.
 
 
+## Things I need to think about:
+
+- ways to define reduction methods, eg `average` and `sum`
+- How to implement this. Does it use [Arel](https://github.com/rails/arel)?
