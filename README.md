@@ -188,3 +188,8 @@ like in Ruby.
 
 - ways to define reduction methods, eg `average` and `sum`
 - How to implement this. Does it use [Arel](https://github.com/rails/arel)?
+
+## Useful links
+
+- Arel
+- for inspiration and comparison: [Sequel](http://sequel.jeremyevans.net/)
