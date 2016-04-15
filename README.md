@@ -1,6 +1,6 @@
 # HyperactiveRecord
 
-**Note: This project doesn’t actually exist. I’ve just written this README in the hope that someone else finds it compelling enough to implement it.**
+**Note: This project doesn’t actually exist. I’ve just written this README in the hope that someone else finds it compelling enough to implement.**
 
 HyperactiveRecord is an ActiveRecord plugin. It lets you write ActiveRecord-like queries with a DSL which more closely imitates the experience of using normal objects.
 
