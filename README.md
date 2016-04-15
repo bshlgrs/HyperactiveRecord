@@ -4,8 +4,6 @@
 
 HyperactiveRecord is an ActiveRecord plugin. It lets you write ActiveRecord-like queries with a DSL which more closely imitates the experience of using normal objects.
 
-In HyperStrict mode, it also bans you from directly calling relations. Eg you can’t call the comments method on a User object like you would in Rails; if you want to access your comments you have to do it from the HyperactiveQuery where you loaded that user. This makes n + 1 queries much harder to write accidentally. I’m not sure whether HyperStrict mode is a good idea.
-
 ## Examples
 
 ```ruby
@@ -208,6 +206,8 @@ like in Ruby.
 
 - ways to define reduction methods, eg `average` and `sum`
 - How to implement this. Does it use [Arel](https://github.com/rails/arel)?
+
+> In HyperStrict mode, it also bans you from directly calling relations. Eg you can’t call the comments method on a User object like you would in Rails; if you want to access your comments you have to do it from the HyperactiveQuery where you loaded that user. This makes n + 1 queries impossible to write accidentally. I’m not sure whether HyperStrict mode is a good idea.
 
 ## Useful links
 
