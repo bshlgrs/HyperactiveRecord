@@ -1,6 +1,6 @@
 # HyperactiveRecord
 
-**Note: This project doesn’t actually exist. I’ve just written this README in the hope that someone else finds it compelling enough to implement it. (Or maybe I'll implement it myself sometime.)**
+**Note: This project doesn’t actually exist. I’ve just written this README in the hope that someone else finds it compelling enough to implement it.**
 
 HyperactiveRecord is an ActiveRecord plugin. It lets you write ActiveRecord-like queries with a DSL which more closely imitates the experience of using normal objects.
 
@@ -12,6 +12,9 @@ In HyperStrict mode, it also bans you from directly calling relations. Eg you ca
 # User includes the HyperactiveRecord plugin
 # Starting out normal. Let's get the users have made a post.
 users_with_posts = User.filter { |u| u.posts.length > 0 }
+
+# Let's get the comments on posts which are published.
+comments_on_published_posts = Comment.where { |c| c.post.published }
 
 # Let's get the oldest 10 users who have made a post.
 top_ten = User.filter { |u| !u.posts.empty? }.order_by(:created_at).limit(10)
@@ -210,3 +213,5 @@ like in Ruby.
 
 - Arel
 - for inspiration and comparison: [Sequel](http://sequel.jeremyevans.net/)
+
+
