@@ -8,7 +8,7 @@ HyperactiveRecord is an ActiveRecord plugin. It lets you write ActiveRecord-like
 
 ```ruby
 # User includes the HyperactiveRecord plugin
-# Starting out normal. Let's get the users have made a post.
+# Starting out normal. Let's get the users who have made a post.
 users_with_posts = User.filter { |u| u.posts.length > 0 }
 
 # Let's get the comments on posts which are published.
